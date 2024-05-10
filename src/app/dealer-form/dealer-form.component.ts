@@ -98,7 +98,7 @@ export class DealerFormComponent implements OnInit {
         } else {
           //   Save the new user details in database
           this.service.addDealer(dealer).subscribe((newdealer) => {
-            this.toastr.success('User created successfully');
+            this.toastr.success('dealer created successfully');
             console.log('User created:', newdealer);
             this.dealerForm.reset();
             this.goto();
