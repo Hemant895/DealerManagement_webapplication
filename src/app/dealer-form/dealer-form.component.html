@@ -1,0 +1,244 @@
+<!-- component -->
+<section class="max-w-7xl p-6 mx-auto bg-indigo-600 rounded-md shadow-md dark:bg-gray-800 mt-20">
+    <h1 class="text-xl font-bold text-white capitalize dark:text-white">Dearler Form</h1>
+    <form [formGroup]="dealerForm">
+        <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-4">
+            <div>
+                <label class="text-white dark:text-gray-200" >Name</label>
+                <input type="text" formControlName="name" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+           
+                <div
+                *ngIf="
+                  dealerForm.get('name').touched &&
+                  dealerForm.get('name').errors?.required
+                "
+                class="invalid-feedback"
+              >
+                <p class="mt-2 text-sm text-green-600 dark:text-green-500">
+                  <span class="font-medium">Name is required.</span>
+                </p>
+              </div>
+             </div>
+
+            <div>
+                <label class="text-white dark:text-gray-200" for="emailAddress">Email</label>
+                <input id="emailAddress" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" formControlName="email" type="email" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                <div
+                *ngIf="
+                  dealerForm.get('email').touched &&
+                  dealerForm.get('email').errors?.required
+                "
+                class="invalid-feedback"
+              >
+                <p class="mt-2 text-sm text-green-600 dark:text-green-500">
+                  <span class="font-medium">Email is required.</span>
+                </p>
+              </div>
+            </div>
+            <div>
+                <label class="text-white dark:text-gray-200" >Company Name</label>
+                <input type="text" formControlName="companyName" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                <div
+                *ngIf="
+                  dealerForm.get('companyName').touched &&
+                  dealerForm.get('companyName').errors?.required
+                "
+                class="invalid-feedback"
+              >
+                <p class="mt-2 text-sm text-green-600 dark:text-green-500">
+                  <span class="font-medium">CompanyName is required.</span>
+                </p>
+              </div>
+            </div>
+            <div>
+                <label class="text-white dark:text-gray-200" >Mobile No</label>
+                <input type="number"  [ngClass]="{ 'is-invalid': submitted && f.mobileNo.errors }" formControlName="mobileNo" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                <div
+                *ngIf="f.mobileNo.touched && f.mobileNo.invalid"
+                class="invalid-feedback"
+              >
+                <p class="mt-2 text-sm text-green-600 dark:text-green-500">
+                  <span class="font-medium" *ngIf="f.mobileNo.errors.required">
+                    Mobile Number is required.</span
+                  >
+                  <span class="font-medium" *ngIf="f.mobileNo.errors.pattern">
+                    Please enter a valid 10-digit phone number.</span
+                  >
+                </p>
+              </div>
+            </div>
+           
+            <div>
+                <label class="text-white dark:text-gray-200" >Whatsapp No</label>
+                <input type="number" formControlName="whatsappNo" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                <div
+                *ngIf="
+                  dealerForm.get('whatsappNo').touched &&
+                  dealerForm.get('whatsappNo').errors?.required
+                "
+                class="invalid-feedback"
+              >
+                <p class="mt-2 text-sm text-green-600 dark:text-green-500">
+                  <span class="font-medium">whatsappNo is required.</span>
+                </p>
+              </div>
+            </div>
+            <div>
+                <label class="text-white dark:text-gray-200" >Telephone No</label>
+                <input type="number" formControlName="telephoneNo" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                <div
+                *ngIf="
+                  dealerForm.get('telephoneNo').touched &&
+                  dealerForm.get('telephoneNo').errors?.required
+                "
+                class="invalid-feedback"
+              >
+                <p class="mt-2 text-sm text-green-600 dark:text-green-500">
+                  <span class="font-medium">telephoneNo is required.</span>
+                </p>
+              </div>
+            </div>
+            <div>
+                <label class="text-white dark:text-gray-200" >GST Type </label>
+                <input type="text" formControlName="gstType" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                <div
+                *ngIf="
+                  dealerForm.get('gstType').touched &&
+                  dealerForm.get('gstType').errors?.required
+                "
+                class="invalid-feedback"
+              >
+                <p class="mt-2 text-sm text-green-600 dark:text-green-500">
+                  <span class="font-medium">gstType is required.</span>
+                </p>
+              </div>
+            </div>
+            <div>
+                <label class="text-white dark:text-gray-200" >GSTIN</label>
+                <input type="text" formControlName="gstin" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                <div
+                *ngIf="
+                  dealerForm.get('gstin').touched &&
+                  dealerForm.get('gstin').errors?.required
+                "
+                class="invalid-feedback"
+              >
+                <p class="mt-2 text-sm text-green-600 dark:text-green-500">
+                  <span class="font-medium">gstin is required.</span>
+                </p>
+              </div>
+            </div>
+            <div>
+                <label class="text-white dark:text-gray-200" >Pan No </label>
+                <input type="text" formControlName="panNo" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                <div
+                *ngIf="
+                  dealerForm.get('panNo').touched &&
+                  dealerForm.get('panNo').errors?.required
+                "
+                class="invalid-feedback"
+              >
+                <p class="mt-2 text-sm text-green-600 dark:text-green-500">
+                  <span class="font-medium">panNo is required.</span>
+                </p>
+              </div>
+            </div>
+            <div>
+                <label class="text-white dark:text-gray-200" >Credit Limit </label>
+                <input type="Number" formControlName="creditLimit" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                <div
+                *ngIf="
+                  dealerForm.get('creditLimit').touched &&
+                  dealerForm.get('creditLimit').errors?.required
+                "
+                class="invalid-feedback"
+              >
+                <p class="mt-2 text-sm text-green-600 dark:text-green-500">
+                  <span class="font-medium">creditLimit is required.</span>
+                </p>
+              </div>
+            </div>
+            <div>
+                <label class="text-white dark:text-gray-200" >Opening Banalce </label>
+                <input type="Number" formControlName="openingBalance" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                <div
+                *ngIf="
+                  dealerForm.get('openingBalance').touched &&
+                  dealerForm.get('openingBalance').errors?.required
+                "
+                class="invalid-feedback"
+              >
+                <p class="mt-2 text-sm text-green-600 dark:text-green-500">
+                  <span class="font-medium">openingBalance is required.</span>
+                </p>
+              </div>
+            </div>
+            <div>
+                <label class="text-white dark:text-gray-200" >Suplier type </label>
+                <input type="text" formControlName="supplierType" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                <div
+                *ngIf="
+                  dealerForm.get('supplierType').touched &&
+                  dealerForm.get('supplierType').errors?.required
+                "
+                class="invalid-feedback"
+              >
+                <p class="mt-2 text-sm text-green-600 dark:text-green-500">
+                  <span class="font-medium">supplierType is required.</span>
+                </p>
+              </div>
+            </div>
+            <div>
+                <label class="text-white dark:text-gray-200" for="passwordConfirmation">Date of Birth</label>
+                <input id="date" type="date" formControlName="dateOfBirth" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                <div
+                *ngIf="
+                  dealerForm.get('dateOfBirth').touched &&
+                  dealerForm.get('dateOfBirth').errors?.required
+                "
+                class="invalid-feedback"
+              >
+                <p class="mt-2 text-sm text-green-600 dark:text-green-500">
+                  <span class="font-medium">dateOfBirth is required.</span>
+                </p>
+              </div>
+            </div>
+            <div>
+                <label class="text-white dark:text-gray-200" for="passwordConfirmation">Anniversary Date</label>
+                <input id="date" type="date" formControlName="anniversaryDate" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                <div
+                *ngIf="
+                  dealerForm.get('anniversaryDate').touched &&
+                  dealerForm.get('anniversaryDate').errors?.required
+                "
+                class="invalid-feedback"
+              >
+                <p class="mt-2 text-sm text-green-600 dark:text-green-500">
+                  <span class="font-medium">anniversaryDate is required.</span>
+                </p>
+              </div>
+            </div>
+        </div>
+       <div class="flex justify-center  gap-5 mt-6">
+        <div class="pt-4 flex items-center space-x-4">
+            <button
+              (click)="onSubmit()"
+              class="bg-blue-500 flex justify-center items-center hover:bg-sky-950 w-full text-white px-4 py-3 rounded-md focus:outline-none"
+            >
+              Create Dealer
+            </button>
+          </div>
+          <div class="pt-4 flex items-center space-x-4">
+            <button
+              routerLink="/dealerlist"
+              class="bg-blue-500 flex justify-center hover:bg-sky-950 items-center w-full text-white px-4 py-3 rounded-md focus:outline-none"
+            >
+              Go to DealerList
+            </button>
+          </div>
+       </div>
+       
+    </form>
+</section>
+
+
