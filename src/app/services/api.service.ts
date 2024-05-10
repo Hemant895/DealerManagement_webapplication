@@ -61,4 +61,12 @@ export class ApiService {
    });
     return this.http.delete(`${'https://pv.greatfuturetechno.com/pv-api/dealer/?id='}${id}`,{headers});
   }
+
+  getById(id: string) {
+    const token = 'aa4d0b1b9b2794090b18febbd71cf2c90e0d5a83'
+    const headers = new HttpHeaders({
+     'Authorization': `Token ${token}`
+   });
+    return this.http.get(`${'https://pv.greatfuturetechno.com/pv-api/dealer/?id='}${id}`,{headers});
+}
 }

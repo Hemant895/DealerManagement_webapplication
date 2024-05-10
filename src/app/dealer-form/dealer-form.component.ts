@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from '../services/api.service';
 import { ToastrService } from 'ngx-toastr';
-import { Router } from '@angular/router';
-
+import { ActivatedRoute, Router } from '@angular/router';
+import { first } from 'rxjs/operators';
+import { Dealer } from '../dealer.model';
 @Component({
   selector: 'app-dealer-form',
   templateUrl: './dealer-form.component.html',
@@ -11,22 +12,47 @@ import { Router } from '@angular/router';
 })
 export class DealerFormComponent implements OnInit {
   dealerForm: FormGroup |any;
+  dealerData:any
   submitted = false;
   Dealer: any = [];
+  id?: string;
+  // Define options for GST types
+  gstTypeOptions = ['Registered', 'UnRegistered'];
+
+  // Define options for supplier types
+  supplierTypeOptions = ['manufacture','manufacture1', 'manufacture2'];
   constructor(private formBuilder: FormBuilder,
     private service:ApiService ,
     private toastr:ToastrService,
     private router: Router,
-  ) { }
+    private route: ActivatedRoute,
+  ) { 
+    
+  }
 
   ngOnInit(): void {
     this.createForm();
      //  Edit mode
-     this.Dealer = history.state.dealer;
-     if (this.Dealer) {
-       this.dealerForm.patchValue(this.Dealer);
-     }
-     
+     this.id = this.route.snapshot.params['id'];
+    //  this.Dealer = history.state.dealer;
+    //  if (this.Dealer) {
+    //    this.dealerForm.setValue(this.Dealer);
+    //  }
+    if (this.id) {
+      // edit mode
+    
+      this.service.getById(this.id)
+          .pipe(first())
+          .subscribe(data => {
+            this.dealerData = data;
+            if (this.dealerData) {
+              this.patchFormWithDealerData(this.dealerData);
+            }
+            console.log(data)
+          });
+  }
+    //  this.prefillForm();
+    
   }
 
   createForm() {
@@ -37,16 +63,36 @@ export class DealerFormComponent implements OnInit {
       mobileNo: ['', [Validators.required,Validators.pattern('^((\\+91-?)|0)?[0-9]{10}$')]],
       whatsappNo:['', [Validators.required]],
       telephoneNo: ['', [Validators.required]],
-      gstType: ['',Validators.required],
+      gstType: ['UnRegistered',Validators.required],
       gstin: ['',Validators.required],
       panNo: ['',Validators.required],
       creditLimit: [null, [Validators.required]],
       openingBalance: [null, [Validators.required]],
-      supplierType: ['',Validators.required],
+      supplierType: ['manufacture',Validators.required],
       dateOfBirth: ['',Validators.required],
       anniversaryDate: ['',Validators.required],
     });
   }
+ 
+  patchFormWithDealerData(dealerData: any) {
+    this.dealerForm.patchValue({
+      name: dealerData.name,
+      email: dealerData.email,
+      companyName: dealerData.company_name,
+      mobileNo: dealerData.mobile_no,
+      whatsappNo: dealerData.whatsapp_no,
+      telephoneNo: dealerData.telephone_no,
+      gstType: dealerData.gst_type,
+      gstin: dealerData.gstin,
+      panNo: dealerData.pan_no,
+      creditLimit: dealerData.credit_limit,
+      openingBalance: dealerData.opening_balance,
+      supplierType: dealerData.supplier_type,
+      dateOfBirth: dealerData.date_of_birth,
+      anniversaryDate: dealerData.anniversary_date,
+    });
+  }
+  
   get f() {
     return this.dealerForm.controls;
   }

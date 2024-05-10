@@ -100,7 +100,9 @@
             </div>
             <div>
                 <label class="text-white dark:text-gray-200" >GST Type </label>
-                <input type="text" formControlName="gstType" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                <select formControlName="gstType" id="gstType" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                  <option *ngFor="let option of gstTypeOptions" [value]="option">{{ option }}</option>
+                </select>
                 <div
                 *ngIf="
                   dealerForm.get('gstType').touched &&
@@ -113,6 +115,7 @@
                 </p>
               </div>
             </div>
+           
             <div>
                 <label class="text-white dark:text-gray-200" >GSTIN</label>
                 <input type="text" formControlName="gstin" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
@@ -174,20 +177,12 @@
               </div>
             </div>
             <div>
-                <label class="text-white dark:text-gray-200" >Suplier type </label>
-                <input type="text" formControlName="supplierType" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
-                <div
-                *ngIf="
-                  dealerForm.get('supplierType').touched &&
-                  dealerForm.get('supplierType').errors?.required
-                "
-                class="invalid-feedback"
-              >
-                <p class="mt-2 text-sm text-green-600 dark:text-green-500">
-                  <span class="font-medium">supplierType is required.</span>
-                </p>
-              </div>
+              <label for="supplierType" class="text-white dark:text-gray-200">Supplier Type</label>
+              <select formControlName="supplierType" id="supplierType" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                <option *ngFor="let option of supplierTypeOptions" [value]="option">{{ option }}</option>
+              </select>
             </div>
+            
             <div>
                 <label class="text-white dark:text-gray-200" for="passwordConfirmation">Date of Birth</label>
                 <input id="date" type="date" formControlName="dateOfBirth" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">

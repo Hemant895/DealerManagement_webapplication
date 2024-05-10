@@ -13,6 +13,10 @@ const routes: Routes = [
     component:DealerFormComponent
   },
   {
+    path:'dealerform/:id',
+    component:DealerFormComponent
+  },
+  {
     path:'dealerlist',
     component:DealerTableComponent
   }
