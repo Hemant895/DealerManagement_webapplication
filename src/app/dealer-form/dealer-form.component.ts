@@ -5,6 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { ActivatedRoute, Router } from '@angular/router';
 import { first } from 'rxjs/operators';
 import { Dealer } from '../dealer.model';
+import { NgxSpinnerService } from 'ngx-spinner';
 @Component({
   selector: 'app-dealer-form',
   templateUrl: './dealer-form.component.html',
@@ -26,6 +27,7 @@ export class DealerFormComponent implements OnInit {
     private toastr:ToastrService,
     private router: Router,
     private route: ActivatedRoute,
+    private spinner : NgxSpinnerService,
   ) { 
     
   }
@@ -103,6 +105,9 @@ export class DealerFormComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true
+    if(this.dealerForm.invalid){
+      this.toastr.error('Please fill all the fields');
+    }
     if (this.dealerForm.valid) {
       console.log('Form submitted:', this.dealerForm.value);
       const dealer = {
@@ -125,17 +130,19 @@ export class DealerFormComponent implements OnInit {
         opening_balance_type: 'Cr'
       };
       console.log('test' ,dealer);
+      this.spinner.show()
      //  If it is an edit operation then update the data
      this.service.getUserByEmail(dealer.email).subscribe({
       next: (existingUser) => {
         if (this.Dealer && existingUser) {
           this.toastr.success('Dearler already exist');
-
+          this.spinner.hide()
           dealer.mobile_no = existingUser.mobile_no;
 
           const id = JSON.parse(JSON.stringify(existingUser.id))
           //  Update the user details in database
           this.service.updateDealer(dealer,id ).subscribe((updatedDealer) => {
+            this.spinner.hide()
             console.log('User updated:', updatedDealer);
             this.toastr.success('Dealer updated successfully');
             this.dealerForm.reset();
@@ -144,6 +151,7 @@ export class DealerFormComponent implements OnInit {
         } else {
           //   Save the new user details in database
           this.service.addDealer(dealer).subscribe((newdealer) => {
+            this.spinner.hide()
             this.toastr.success('dealer created successfully');
             console.log('User created:', newdealer);
             this.dealerForm.reset();

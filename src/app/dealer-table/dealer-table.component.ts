@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../services/api.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 @Component({
   selector: 'app-dealer-table',
   templateUrl: './dealer-table.component.html',
@@ -12,6 +13,7 @@ export class DealerTableComponent implements OnInit {
   constructor(private service:ApiService,
     private toastr:ToastrService,
     private router: Router,
+    private spinner : NgxSpinnerService,
   ) { }
 
   ngOnInit(): void {
@@ -19,9 +21,11 @@ export class DealerTableComponent implements OnInit {
   }
 
   Dealerlist(){
+    this.spinner.show()
     this.service.getDealerList().subscribe({
      next:(data)=>{
       this.dealerdata = data;
+      this.spinner.hide()
       this.toastr.success('successfully fetched ');
       console.log('Data : ', data);
      },
