@@ -30,7 +30,7 @@ export class DealerTableComponent implements OnInit {
       console.log('Data : ', data);
      },
      error:(error)=>{
-      this.toastr.error(error);
+      this.toastr.error(error.msg);
      }
     })
   }
