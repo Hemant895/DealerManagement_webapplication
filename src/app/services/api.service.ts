@@ -10,7 +10,7 @@ export class ApiService {
   constructor(private http:HttpClient) { }
 
 
-     token = 'aa4d0b1b9b2794090b18febbd71cf2c90e0d5a83'
+     token = '7bbbed6e0d67678fa4498bb8ca1d0ef7760fdbe0'
      headers = new HttpHeaders({
       'Authorization': `Token ${this.token}`
     });
@@ -18,7 +18,7 @@ export class ApiService {
   
 
   getUserByEmail(email: any) {
-    const token = 'aa4d0b1b9b2794090b18febbd71cf2c90e0d5a83'
+    const token = '7bbbed6e0d67678fa4498bb8ca1d0ef7760fdbe0'
     const headers = new HttpHeaders({
      'Authorization': `Token ${token}`
    });
@@ -29,7 +29,7 @@ export class ApiService {
   }
 
   getDealerList() {
-    const token = 'aa4d0b1b9b2794090b18febbd71cf2c90e0d5a83'
+    const token = '7bbbed6e0d67678fa4498bb8ca1d0ef7760fdbe0'
     const headers = new HttpHeaders({
      'Authorization': `Token ${token}`
    });
@@ -39,7 +39,7 @@ export class ApiService {
   }
 
   addDealer(Dealer: any){
-    const token = 'aa4d0b1b9b2794090b18febbd71cf2c90e0d5a83'
+    const token = '7bbbed6e0d67678fa4498bb8ca1d0ef7760fdbe0'
     const headers = new HttpHeaders({
      'Authorization': `Token ${token}`
    });
@@ -47,7 +47,7 @@ export class ApiService {
   }
 
   updateDealer(Dealer: any,id:any) {
-    const token = 'aa4d0b1b9b2794090b18febbd71cf2c90e0d5a83'
+    const token = '7bbbed6e0d67678fa4498bb8ca1d0ef7760fdbe0'
     const headers = new HttpHeaders({
      'Authorization': `Token ${token}`
    });
@@ -55,7 +55,7 @@ export class ApiService {
   }
 
   deleteDealer(id: string) {
-    const token = 'aa4d0b1b9b2794090b18febbd71cf2c90e0d5a83'
+    const token = '7bbbed6e0d67678fa4498bb8ca1d0ef7760fdbe0'
     const headers = new HttpHeaders({
      'Authorization': `Token ${token}`
    });
@@ -63,7 +63,7 @@ export class ApiService {
   }
 
   getById(id: string) {
-    const token = 'aa4d0b1b9b2794090b18febbd71cf2c90e0d5a83'
+    const token = '7bbbed6e0d67678fa4498bb8ca1d0ef7760fdbe0'
     const headers = new HttpHeaders({
      'Authorization': `Token ${token}`
    });
